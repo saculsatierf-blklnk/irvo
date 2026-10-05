@@ -5,135 +5,101 @@
 
 ---
 
-## ⚡ Visão Geral do Projeto
+## 🚀 Links de Deploy & Acesso Imediato
 
-O **IRVO** é uma plataforma bilateral de alta segurança projetada com uma estética brutalista e tática de comando militar/espacial. Ele atende tanto contratantes individuais (PF) quanto corporações de elite (**Irvo Business / PJ**), conectando-os a profissionais e operadores técnicos devidamente verificados (**IRVO PRO**).
-
-O projeto foi construído e estruturado em duas camadas:
-1. **Aplicação Web Interativa (Vite + React + TypeScript + Tailwind v4 + Lucide Icons + Web Audio)**: Pronta para execução instantânea no navegador, com alternador de moldura (*iPhone 16 Pro Mockup* vs *Fullscreen Command Center*).
-2. **Aplicação Mobile Nativa (React Native / Expo 52)**: Localizada no diretório [`mobile/`](file:///Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app/mobile), com todas as duplicidades de escopo corrigidas e pronta para compilação iOS/Android via Expo.
+* **🌐 Deploy Online (Vercel):** [https://temporary-instant-sirocco-xdm95ro.vercel.app](https://temporary-instant-sirocco-xdm95ro.vercel.app)
+* **🔑 Link de Reivindicação Permanente:** [Reivindicar Projeto no Vercel](https://vercel.com/claim-deployment?code=50720b89-9d3b-4838-b9f0-a4305a3f3c18)
+* **💻 Acesso Local:** `http://localhost:3001` (ou `http://localhost:3000`)
 
 ---
 
-## 🛰️ Funcionalidades Principais Implementadas
+## ⚡ Guia para o Desenvolvedor do Projeto
 
-### 1. Motor Dual-Mode (Cockpit)
-- **Modo Contratante (Client)**:
-  - 3 Modos de Atendimento:
-    - `DELIVERY (EM CASA)` — Operativo desloca-se até o endereço.
-    - `LOCAL (IR AO LOCAL)` — Cliente desloca-se até a base credenciada.
-    - `REMOTO (ONLINE)` — Atendimento criptografado ponta a ponta.
-  - **Saldo Corporativo Irvo Coin**: Exibição para perfis PJ (R$ 5.500,00 com bônus de 10%).
-  - **Catálogo Dinâmico & Radar Geopolítico**: Categorias ordenadas por peso regional (SP, RJ, BSB, NE, SUL, CO, NO).
+Este repositório contém a reconstrução fiel, completa e sem erros da especificação original **IRVO (Build 4.1 - Estável)**. Ele serve como o protótipo funcional de referência ("Gold Master") para orientar o desenvolvimento mobile nativo e web.
+
+### O que foi corrigido em relação ao documento fonte:
+1. **Eliminação do erro fatal de sintaxe (`Identifier 'LandingScreen' has already been declared`)**: O documento original concatenava pedaços de código com duas declarações da mesma tela.
+2. **Implementação de `handleRequestService`**: A chamada que antes disparava erro agora abre a central completa de despacho e rastreamento de missão tática.
+3. **Inclusão do Reator Tático (`ReactorModal`)**: Implementação dos estilos e métricas do Reator Soberano (Rank OMEGA-1, Score 988, Varredura Tática).
+4. **Barra de Pesquisa e Filtro Instantâneo**: Localiza qualquer um dos 38 serviços e 10 categorias em tempo real.
+5. **Seletor Rápido de Perfis no Topo**: Permite ao dev testar com 1 clique os 4 perfis de usuário (`PF`, `PJ Business`, `PRO Autônomo`, `PRO Parceiro`) sem precisar relogar.
+
+---
+
+## 🛠️ Arquitetura das Duas Versões
+
+### 1. Versão Web de Demonstração ([`src/`](file:///Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app/src))
+- **Stack:** React 19 + TypeScript + Vite 8 + Tailwind CSS v4 + Lucide React + Web Audio API.
+- **Alternador de Moldura:**
+  - `📱 iPhone 16 Pro Frame`: Renderiza o chassi completo com Ilha Dinâmica, botões laterais e indicador inferior.
+  - `🖥️ Fullscreen`: Expande para 100% da viewport para monitoramento de centro de comando.
+- **Áudio Tático:** Efeitos sonoros gerados matematicamente por osciladores no navegador (cliques, pings de radar, alertas e despacho).
+
+### 2. Versão Mobile Nativa ([`mobile/`](file:///Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app/mobile))
+- **Stack:** React Native 0.76 + Expo 52 + Lucide React Native.
+- Arquivo principal: [`mobile/App.tsx`](file:///Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app/mobile/App.tsx)
+- Como rodar no dispositivo físico:
+  ```bash
+  cd mobile
+  npm install
+  npx expo start
+  ```
+
+---
+
+## 🛰️ Módulos e Fluxos do Sistema
+
+### 1. Splash Screen Big Bang
+- Logo monograma `I` com rotação cúbica.
+- Slogans multilíngues rotacionando a cada 750ms:
+  - *Conectando serviços a pessoas* (PT)
+  - *Connecting services to people* (EN)
+  - *Relier les services aux personnes* (FR)
+  - *Verbindet Dienste mit Menschen* (DE)
+  - *サービスと人々をつなぐ* (JA)
+- Zoom Big Bang ao finalizar ou tocar na tela.
+
+### 2. Portal de Entrada & Onboarding (`LandingScreen`)
+- Seleção de Perfil:
+  - **CONTRATAR**: Para Mim (`client_pf`) ou IRVO Business (`client_pj` com saldo R$ 5.500,00 e bônus de 10%).
+  - **PRESTAR**: Sou Autônomo (`provider_pf`) ou Empresa Parceira (`provider_pj`).
+- Validação com máscaras de CPF, CNPJ, Telefone e checagem de maioridade (+18 anos).
+- Verificação de token SMS de 6 dígitos.
+- Definição e confirmação de senha mestra.
+- Modal dos Termos Jurídicos e LGPD.
+
+### 3. Cockpit Dual-Mode Engine (`CockpitScreen`)
+- **Modo Contratante**:
+  - Seleção do modo de operação:
+    - `DELIVERY (EM CASA)`
+    - `LOCAL (IR AO LOCAL)`
+    - `REMOTO (ONLINE)`
+  - Categorias ordenadas pela matriz de peso geopolítico da região ativa:
+    - `SP` (1.5x), `RJ` (1.4x), `BSB` (1.45x), `NE` (1.8x), `SUL` (1.2x), `CO` (1.4x), `NO` (1.3x), `OTHER` (0.8x).
+  - Tiers de serviço: Standard (1.0x), Plus (1.25x), Prime Elite (1.6x).
+  - Checklists obrigatórios: Padlock bloqueia o pedido até 100% dos itens serem marcados.
 - **Modo Prestador (IRVO PRO)**:
-  - Chave seletora `FICAR ONLINE` / `FICAR OFFLINE` com telemetria tátil.
-  - Dashboard financeiro em tempo real (Ganhos 24h e Chamados em Aberto).
-  - Certificações táticas ativas no perfil.
-  - Detecção e aceite de demandas de perímetro nas proximidades.
+  - Verificação de identidade KYC (Biometria Facial Liveness + Upload de licença CRM/CREA/OAB).
+  - Botão gigante `FICAR ONLINE` / `FICAR OFFLINE`.
+  - Dashboard de Ganhos (24h) e chamados ativos.
+  - Radar de demandas de perímetro em tempo real.
 
-### 2. Geopolítica de Preços Soberanos (Base 2026)
-- Multiplicadores automáticos por setor:
-  - **SP (Cidadela / Vila Olímpia / Itaim)**: `1.5x`
-  - **RJ (Alerta Máximo / Zona Sul)**: `1.4x`
-  - **BSB (Eixo de Poder / Lago Sul)**: `1.45x`
-  - **NE (Sazonal Elite / Trancoso / Maceió)**: `1.8x`
-  - **SUL (Polo Tecnológico / Agro Civil)**: `1.2x`
-  - **CO (Agro Power / Goiânia / Cuiabá)**: `1.4x`
-  - **NO (Fronteira Logística / AM / PA)**: `1.3x`
-  - **OTHER (Deflator Regional)**: `0.8x`
-- Níveis de Serviço (Tiers):
-  - `STANDARD` (`1.0x`): Protocolo padrão verificado.
-  - `PLUS` (`1.25x`): Avaliação 4.8+ e prioridade de agenda.
-  - `PRIME ELITE` (`1.6x`): Seguro R$ 50k, curadoria manual e NDA.
+### 4. Central de Despacho & Rastreamento (`MissionTrackerModal`)
+- Operador alocado com badge, certificações e avaliação.
+- ETA regressivo e rastreamento tático no mapa de obsidiana.
+- Canal de comunicação criptografado P2P (PGP 4096-bit).
+- Botão de emergência SOS.
 
-### 3. As 10 Categorias & 38 Serviços Especializados
-- **Core Urbano**:
-  1. `CARE_AESTHETICS` (Cuidados & Estética): Arquitetura Ungueal, Engenharia Capilar, Calibração Facial, Maquiagem de Alta Resistência.
-  2. `TECH_DEV` (Tecnologia & Desenv.): Soberania de Código, Fortaleza Digital (Cybersec), Mineração de Inteligência, Suporte Tático de Infra.
-  3. `INFRA_MAINT` (Infra & Manutenção): Controle Atmosférico (HVAC), Integridade Estrutural, Garantia de Colheita, Rede Elétrica Industrial.
-  4. `EDU_CONSULT` (Educação & Consultoria): Supremacia Linguística, Arquitetura de Ativos, Cripto-Sucessão.
-- **Expansão Omega**:
-  5. `BIO_OPT` (Saúde & Bio-Otimização): Protocolo NAD+ Mitocondrial, Saturação Pressurizada (HBOT), Calibração Metabólica, Soroterapia.
-  6. `TACTICAL_ELITE` (Tática & Elite): Defesa Cinética, Varredura TSCM Anti-Grampo, Arquitetura de Estilo de Vida, Sommelier de Charutos, Transporte Executivo Blindado.
-  7. `MENTAL_ELITE` (Mental & Performance): Psicologia de Alta Performance, Arquitetura do Sono, Gestão de Crise (Burnout).
-  8. `LOGISTICS_IND` (Logística Industrial): Auditoria de Supply Chain, Last Mile Seguro (Norte), Logística Fluvial Tática.
-  9. `ASSET_MAINT` (Assets - Iates & Jatos): Mecânica Naval Diesel, Aviônica & Sistemas Aero, Detalhamento de Interiores.
-  10. `AGRO_TACTICAL` (Agro Tático): Agricultura de Precisão GPS, Análise de Solo Espectro, Pulverização por Drone.
-
-### 4. Protocolo Obrigatório & Bloqueio por Padlock
-- Cada serviço possui lista de checagem técnica (ex: Desinfecção em Autoclave, Teste de Lâmina, Laudo de Aterramento).
-- O botão **"SOLICITAR AGORA"** permanece bloqueado com cadeado até que **100% dos itens** do protocolo sejam confirmados.
-
-### 5. Central de Rastreamento Tático de Missão
-- Resolução do operador alocado (Nome, Badge, Rating e Certificações).
-- Contagem regressiva de ETA (tempo estimado) e coordenadas táticas no mapa de obsidiana.
-- Timeline de 4 etapas de execução.
-- **Canal Criptografado P2P (PGP 4096-bit)** com simulador de troca de mensagens.
-- Botão de emergência **SOS** com telemetria prioritária.
-
-### 6. Validação KYC & Prova de Vida (Liveness)
-- Validação para desbloqueio do perfil PRO:
-  - Prova de vida biométrica facial com retículo holográfico animado.
-  - Upload de documento regulatório (CRM, CREA, OAB, ANAC).
-  - Simulação de análise por Inteligência Artificial conectada às bases federais.
-
-### 7. Síntese Sonora Tática (Web Audio API)
-- Efeitos sonoros gerados por osciladores matemáticos sem necessidade de arquivos de áudio pesados:
-  - Cliques de toque tátil (transição de menus)
-  - Radar Sweep Ping (frequência 1760Hz)
-  - Sirene tática de alerta
-  - Alocação e confirmação de missão
+### 5. Reator Soberano (`ReactorModal`)
+- Diagnóstico de telemetria, integridade do protocolo, latência de enclave, operadores conectados e botão de varredura tática.
 
 ---
 
-## 🚀 Como Executar
+## 📦 Como Subir para o GitHub do Dev
 
-### Versão Web (Navegador)
-No diretório do projeto:
 ```bash
 cd /Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app
-npm run dev
-```
-Acesse no navegador: **`http://localhost:3001`** (ou `http://localhost:3000`).
-
-### Versão Mobile Nativa (Expo)
-No subdiretório `mobile`:
-```bash
-cd /Users/blacklink.com.br/.gemini/antigravity/scratch/irvo-app/mobile
-npm install
-npx expo start
-```
-Escaneie o QR Code no app **Expo Go** no seu iPhone ou Android.
-
----
-
-## 📂 Estrutura de Arquivos
-
-```
-irvo-app/
-├── index.html                   # Entrada HTML com fontes e viewport
-├── package.json                 # Dependências Web
-├── vite.config.ts               # Configuração do Vite com Tailwind v4
-├── src/
-│   ├── types.ts                 # Interfaces TypeScript do ecossistema
-│   ├── index.css                # Estilos base brutalistas e animações
-│   ├── main.tsx                 # Bootstrap React
-│   ├── App.tsx                  # Roteador principal + Alternador de Mockup
-│   ├── constants/
-│   │   └── data.ts              # Data Store com 10 categorias, tiers, legal e multiplicadores
-│   ├── utils/
-│   │   └── audio.ts             # Motor de sintetizador de áudio tático
-│   └── components/
-│       ├── SplashScreen.tsx     # Introdução Big Bang com logo "I" e slogans multilíngues
-│       ├── LandingScreen.tsx    # Onboarding, perfis PF/PJ, validação SMS e termos
-│       ├── CockpitScreen.tsx    # Centro de comando dual-mode (Client & PRO)
-│       ├── TelemetryHUD.tsx     # Barra de status, ping em tempo real e seletor regional
-│       ├── ObsidianMap.tsx      # Mapa vetorial militar de obsidiana com nós táticos
-│       ├── ServiceCard.tsx      # Card de serviço com checklist obrigatório e tiers
-│       ├── KYCModal.tsx         # Prova de vida facial e verificação com IA
-│       └── MissionTrackerModal.tsx # Rastreamento de missão, chat e telemetria
-└── mobile/
-    ├── App.tsx                  # Versão React Native pura corrigida (sem duplicidades)
-    ├── package.json             # Dependências Expo mobile
-    └── app.json                 # Manifesto do app Expo
+git remote add origin <URL_DO_REPOSITORIO_GITHUB>
+git branch -M main
+git push -u origin main
 ```
